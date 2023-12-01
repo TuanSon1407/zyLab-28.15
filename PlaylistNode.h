@@ -3,6 +3,7 @@
 
 class PlaylistNode {
   public:
+    PlaylistNode(string ID, string songTitle, string artist, int songDuration);
     string GetID();
     string GetSongName();
     string GetArtistName();
