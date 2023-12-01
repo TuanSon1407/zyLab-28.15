@@ -5,6 +5,7 @@
 
 class PlaylistNode {
   public:
+    PlaylistNode();
     PlaylistNode(std::string ID, std::string songTitle, std::string artist, int songDuration);
     std::string GetID();
     std::string GetSongName();
@@ -16,10 +17,10 @@ class PlaylistNode {
     void PrintPlaylistNode();
 
   private:
-    std::string uniqueID = "none";
-    std::string songName = "none";
-    std::string artistName = "none";
-    int songLength = 0;
-    PlaylistNode* nextNodePtr = nullptr;
+    std::string uniqueID;
+    std::string songName;
+    std::string artistName;
+    int songLength;
+    PlaylistNode* nextNodePtr;
 };
 #endif
