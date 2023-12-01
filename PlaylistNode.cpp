@@ -1,1 +1,31 @@
+#include <iostream>
+using namespace std;
 
+#include "PlaylistNode.h"
+
+string PlaylistNode::GetID() {return uniqueID}
+
+string PlaylistNode::GetSongName() {return songName}
+
+string PlaylistNode::GetArtistName() {return artistName}
+
+int PlaylistNode::GetSongLength() {return songLength}
+
+PlayListNode* PlaylistNode::GetNext() {
+
+}
+
+void PlaylistNode::InsertAfter(PlaylistNode* nodePtr) {
+
+}
+
+void PlaylistNode::SetNext(PlaylistNode* nodePtr) {
+
+}
+
+void PlaylistNode::PrintPlaylistNode() {
+  cout << "Unique ID: " << uniqueID << endl;
+  cout << "Song Name: " << songName << endl;
+  cout << "Artist Name: " << artistName << endl;
+  cout << "Song Length (in seconds): " << songLength << endl;
+}
