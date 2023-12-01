@@ -2,6 +2,12 @@
 using namespace std;
 
 #include "PlaylistNode.h"
+PlaylistNode::PlaylistNode (string ID, string songTitle, string artist, int songDuration) {
+  uniqueID = ID;
+  songName = songTitle;
+  artistName = artist;
+  songLength = songDuration;
+}
 
 string PlaylistNode::GetID() {return uniqueID}
 
