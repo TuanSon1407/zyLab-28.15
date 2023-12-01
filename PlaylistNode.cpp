@@ -2,8 +2,9 @@
 using namespace std;
 
 #include "PlaylistNode.h"
+
 PlaylistNode::PlaylistNode () {
-  uniqueID = "none:;
+  uniqueID = "none";
   songName = "none";
   artistName = "none";
   songLength = 0;
@@ -18,13 +19,13 @@ PlaylistNode::PlaylistNode (string ID, string songTitle, string artist, int song
   nextNodePtr = nullptr;
 }
 
-string PlaylistNode::GetID() {return uniqueID}
+string PlaylistNode::GetID() {return uniqueID;}
 
-string PlaylistNode::GetSongName() {return songName}
+string PlaylistNode::GetSongName() {return songName;}
 
-string PlaylistNode::GetArtistName() {return artistName}
+string PlaylistNode::GetArtistName() {return artistName;}
 
-int PlaylistNode::GetSongLength() {return songLength}
+int PlaylistNode::GetSongLength() {return songLength;}
 
 PlayListNode* PlaylistNode::GetNext() {
 
