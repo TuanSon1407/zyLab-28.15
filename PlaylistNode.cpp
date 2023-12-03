@@ -3,14 +3,6 @@ using namespace std;
 
 #include "PlaylistNode.h"
 
-PlaylistNode::PlaylistNode () {
-  uniqueID = "none";
-  songName = "none";
-  artistName = "none";
-  songLength = 0;
-  nextNodePtr = nullptr;
-}
-
 PlaylistNode::PlaylistNode (string ID, string songTitle, string artist, int songDuration) {
   uniqueID = ID;
   songName = songTitle;
