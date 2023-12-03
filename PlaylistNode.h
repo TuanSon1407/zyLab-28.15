@@ -5,8 +5,7 @@
 
 class PlaylistNode {
   public:
-    PlaylistNode();
-    PlaylistNode(std::string ID, std::string songTitle, std::string artist, int songDuration);
+    PlaylistNode(std::string ID = "none", std::string songTitle = "none", std::string artist = "none", int songDuration = 0);
     std::string GetID();
     std::string GetSongName();
     std::string GetArtistName();
