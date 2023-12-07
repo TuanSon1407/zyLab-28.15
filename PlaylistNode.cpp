@@ -1,9 +1,10 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 #include "PlaylistNode.h"
 
-PlaylistNode::PlaylistNode (string ID, string songTitle, string artist, int songDuration) {
+PlaylistNode::PlaylistNode(string ID, string songTitle, string artist, int songDuration) {
   uniqueID = ID;
   songName = songTitle;
   artistName = artist;
@@ -26,7 +27,7 @@ void PlaylistNode::InsertAfter(PlaylistNode* nodePtr) {
 
   tempNodePtr = this->nextNodePtr;
   this->nextNodePtr = nodePtr;
-  nodePtr = tempNodePtr;
+  nodePtr->nextNodePtr = tempNodePtr;
 }
 
 void PlaylistNode::SetNext(PlaylistNode* nodePtr) {
