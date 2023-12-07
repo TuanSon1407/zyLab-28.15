@@ -15,8 +15,22 @@ void PrintMenu(const string playlistTitle) {
 }
 
 PlaylistNode* ExecuteMenu(char option, string playlistTitle, PlaylistNode* headNode) {
-   /* Type your code here */
-   
+   PlaylistNode* tempNode;
+
+   if (option == 'o') {
+      if (headNode == nullptr) {
+         cout << "Playlist is empty" << endl;
+      }
+
+      int i = 1;
+      while (headNode != nullptr) {
+         cout << i << "." << endl;
+         headNode->PrintPlaylistNode();
+         cout << endl;
+         headNode = headNode->GetNext();
+         ++i;
+      }
+   }
 }
 
 int main() {
