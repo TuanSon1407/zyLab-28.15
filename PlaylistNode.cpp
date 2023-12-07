@@ -30,7 +30,7 @@ void PlaylistNode::InsertAfter(PlaylistNode* nodePtr) {
 }
 
 void PlaylistNode::SetNext(PlaylistNode* nodePtr) {
-
+  this->nextNodePtr = nodePtr;
 }
 
 void PlaylistNode::PrintPlaylistNode() {
