@@ -84,7 +84,13 @@ int main() {
       if (option == 'q') {
          break;
       }
-    lastNode = ExecuteMenu(option, playlistTitle, headNode);
+      if (option == 'a') {
+         lastNode = ExecuteMenu(option, playlistTitle, lastNode);
+      }
+      if (option == 'o') {
+         lastNode = ExecuteMenu(option, playlistTitle, headNode);
+      }
+    
    }
    
    return 0;
