@@ -19,12 +19,14 @@ string PlaylistNode::GetArtistName() {return artistName;}
 
 int PlaylistNode::GetSongLength() {return songLength;}
 
-PlayListNode* PlaylistNode::GetNext() {
-
-}
+PlayListNode* PlaylistNode::GetNext() {return nextNodePtr;}
 
 void PlaylistNode::InsertAfter(PlaylistNode* nodePtr) {
+  nextNodePtr* tempNodePtr = nullptr;
 
+  tempNodePtr = this->nextNodePtr;
+  this->nextNodePtr = nodePtr;
+  nodePtr = tempNodePtr;
 }
 
 void PlaylistNode::SetNext(PlaylistNode* nodePtr) {
