@@ -20,7 +20,7 @@ PlaylistNode* ExecuteMenu(char option, string playlistTitle, PlaylistNode* headN
    PlaylistNode* currNode;
    PlaylistNode* previousNode;
    PlaylistNode* nextNode;
-   string currID;
+   string currID, currArtist;
    string ID, songTitle, artist;
    int songDuration;
 
@@ -52,22 +52,41 @@ PlaylistNode* ExecuteMenu(char option, string playlistTitle, PlaylistNode* headN
       
       while (headNode != nullptr) {
          currID = headNode->GetID();
-         if (currID == ID) {
-            nextNode = headNode->GetNext();
+         if (ID == currID) {
             cout << "\"" << headNode->GetSongName() << "\"" << " removed.\n" << endl;
             delete headNode;
+            nextNode = headNode->GetNext();
             previousNode->SetNext(nextNode);
          }
          previousNode = headNode;
          headNode = headNode->GetNext();
       }
    }
+   
+   if (option == 's') {
+      cout << "OUTPUT SONGS BY SPECIFIC ARTIST" << endl;
+      cout << "Enter artist's name:\n" << endl;
+      getline (cin, artist);
+      getline (cin,artist);
 
+      int i = 0;
+      while (headNode != nullptr) {
+         currArtist = headNode->GetArtistName();
+         if (artist == currArtist) {
+            cout << i << "." << endl;
+            headNode->PrintPlaylistNode();
+            cout << endl;
+         }
+         headNode = headNode->GetNext();
+         ++i;
+      }
+   }
+      
    if (option == 'o') {
       currNode = headNode->GetNext();
       cout << playlistTitle << " - OUTPUT FULL PLAYLIST" << endl;
       if (currNode == nullptr) {
-         cout << "Playlist is empty" << endl;
+         cout << "Playlist is empty\n" << endl;
       }
 
       int i = 1;
@@ -108,10 +127,9 @@ int main() {
       if (option == 'a') {
          lastNode = ExecuteMenu(option, playlistTitle, lastNode);
       }
-      if ((option == 'o') || (option == 'd')) {
+      if ((option == 'd') || (option == 's') || (option == 'o')) {
          lastNode = ExecuteMenu(option, playlistTitle, headNode);
       }
-    
    }
    
    return 0;
