@@ -10,7 +10,7 @@ class PlaylistNode {
     std::string GetSongName();
     std::string GetArtistName();
     int GetSongLength();
-    PlayListNode* GetNext();
+    PlaylistNode* GetNext();
     void InsertAfter(PlaylistNode* nodePtr);
     void SetNext(PlaylistNode* nodePtr);
     void PrintPlaylistNode();
