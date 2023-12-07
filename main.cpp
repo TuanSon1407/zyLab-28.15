@@ -4,8 +4,6 @@
 using namespace std;
 
 void PrintMenu(const string playlistTitle) {
-   string userInput;
-   
    cout << playlistTitle <<  " PLAYLIST MENU" << endl;
    cout << "a - Add song" << endl;
    cout << "d - Remove song" << endl;
@@ -13,9 +11,7 @@ void PrintMenu(const string playlistTitle) {
    cout << "s - Output songs by specific artist" << endl;
    cout << "t - Output total time of playlist (in seconds)" << endl;
    cout << "o - Output full playlist" << endl;
-   cout << "q - Quit\n" << endl;
-
-   cout << "Choose an option:" << endl;
+   cout << "q - Quit" << endl;
 }
 
 PlaylistNode* ExecuteMenu(char option, string playlistTitle, PlaylistNode* headNode) {
@@ -24,10 +20,27 @@ PlaylistNode* ExecuteMenu(char option, string playlistTitle, PlaylistNode* headN
 }
 
 int main() {
-   string playlistName;
+   string playlistTitle;
+   playlistNode* headNode;
+   char option;
+   
    cout << "Enter playlist's title: " << endl;
-   getline (cin, playlistName);
-   PrintMenu(playlistName);
+   getline (cin, playlistTitle);
+   PrintMenu(playlistTitle);
+   
+   while ((option != 'q')) {
+      cout << "Choose an option:" << endl;
+      cin >> option;
+      while (!((option == 'a') || (option == 'd') || (option == 'c') || (option == 's') || (option == 't') || (option == 'o') || (option == 'q'))) {
+         cout << "Invalid input, try again!" << endl;
+         cin >> option;
+      }
+      if (option == 'q') {
+         break;
+      }
+    headNode = ExecuteMenu(option, playlistTitle, headNode);    
+   }
+   
 
    string ID, songTitle, artist;
    int songDuration;
