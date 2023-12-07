@@ -11,7 +11,7 @@ void PrintMenu(const string playlistTitle) {
    cout << "s - Output songs by specific artist" << endl;
    cout << "t - Output total time of playlist (in seconds)" << endl;
    cout << "o - Output full playlist" << endl;
-   cout << "q - Quit" << endl;
+   cout << "q - Quit\n" << endl;
 }
 
 PlaylistNode* ExecuteMenu(char option, string playlistTitle, PlaylistNode* headNode) {
@@ -26,13 +26,14 @@ int main() {
    
    cout << "Enter playlist's title: " << endl;
    getline (cin, playlistTitle);
-   PrintMenu(playlistTitle);
-   
+      
    while ((option != 'q')) {
+      PrintMenu(playlistTitle);
       cout << "Choose an option:" << endl;
       cin >> option;
       while (!((option == 'a') || (option == 'd') || (option == 'c') || (option == 's') || (option == 't') || (option == 'o') || (option == 'q'))) {
-         cout << "Invalid input, try again!" << endl;
+         PrintMenu(playlistTitle);
+         cout << "Choose an option:" << endl;
          cin >> option;
       }
       if (option == 'q') {
@@ -40,7 +41,7 @@ int main() {
       }
     headNode = ExecuteMenu(option, playlistTitle, headNode);    
    }
-   
+
 
    string ID, songTitle, artist;
    int songDuration;
