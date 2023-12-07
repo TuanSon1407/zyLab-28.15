@@ -22,7 +22,7 @@ int PlaylistNode::GetSongLength() {return songLength;}
 PlayListNode* PlaylistNode::GetNext() {return nextNodePtr;}
 
 void PlaylistNode::InsertAfter(PlaylistNode* nodePtr) {
-  nextNodePtr* tempNodePtr = nullptr;
+  PlaylistNode* tempNodePtr = nullptr;
 
   tempNodePtr = this->nextNodePtr;
   this->nextNodePtr = nodePtr;
