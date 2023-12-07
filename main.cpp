@@ -14,7 +14,13 @@ PlaylistNode* ExecuteMenu(char option, string playlistTitle, PlaylistNode* headN
 }
 
 int main() {
-   /* Type your code here */
+   string ID, songTitle, artist;
+   int songDuration;
+
+   getline(cin, ID);
+   getline(cin, songTitle);
+   getline (cin, artist);
+   cin >> songDuration;  
    
    return 0;
 }
