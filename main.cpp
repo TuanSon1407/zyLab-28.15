@@ -14,9 +14,12 @@ PlaylistNode* ExecuteMenu(char option, string playlistTitle, PlaylistNode* headN
 }
 
 int main() {
+   string playlistName;
+   cout << "Enter playlist's title: " << endl;
+   getline (cin, playlistName);
+
    string ID, songTitle, artist;
    int songDuration;
-
    getline(cin, ID);
    getline(cin, songTitle);
    getline (cin, artist);
