@@ -18,7 +18,9 @@ void PrintMenu(const string playlistTitle) {
 PlaylistNode* ExecuteMenu(char option, string playlistTitle, PlaylistNode* headNode) {
    PlaylistNode* tempNode;
    PlaylistNode* currNode;
-   string temp;
+   PlaylistNode* previousNode;
+   PlaylistNode* nextNode;
+   string currID;
    string ID, songTitle, artist;
    int songDuration;
 
@@ -40,6 +42,25 @@ PlaylistNode* ExecuteMenu(char option, string playlistTitle, PlaylistNode* headN
       tempNode = new PlaylistNode(ID, songTitle, artist, songDuration);
       headNode->InsertAfter(tempNode);
       return tempNode;
+   }
+
+   if (option == 'd') {
+      cout << "REMOVE SONG" << endl;
+      cout << "Enter song's unique ID:" << endl;
+      getline (cin, ID);
+      getline (cin, ID);
+      
+      while (headNode != nullptr) {
+         currID = headNode->GetID();
+         if (currID == ID) {
+            nextNode = headNode->GetNext();
+            cout << "\"" << headNode->GetSongName() << "\"" << " removed.\n" << endl;
+            delete headNode;
+            previousNode->SetNext(nextNode);
+         }
+         previousNode = headNode;
+         headNode = headNode->GetNext();
+      }
    }
 
    if (option == 'o') {
@@ -87,7 +108,7 @@ int main() {
       if (option == 'a') {
          lastNode = ExecuteMenu(option, playlistTitle, lastNode);
       }
-      if (option == 'o') {
+      if ((option == 'o') || (option == 'd')) {
          lastNode = ExecuteMenu(option, playlistTitle, headNode);
       }
     
