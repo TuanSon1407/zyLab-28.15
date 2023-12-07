@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "PlaylistNode.h"
 
 using namespace std;
@@ -16,18 +17,44 @@ void PrintMenu(const string playlistTitle) {
 
 PlaylistNode* ExecuteMenu(char option, string playlistTitle, PlaylistNode* headNode) {
    PlaylistNode* tempNode;
+   PlaylistNode* currNode;
+   string temp;
+   string ID, songTitle, artist;
+   int songDuration;
+
+   if (option == 'a') {
+      cout << "ADD SONG" << endl;
+      cout << "Enter song's unique ID:" << endl;
+      getline (cin, ID);
+      getline (cin, ID);
+      
+      cout << "Enter song's name:" << endl;
+      getline (cin, songTitle);
+      
+      cout << "Enter artist's name:" << endl;
+      getline (cin, artist);
+
+      cout << "Enter song's length (in seconds):\n" << endl;
+      cin >> songDuration;
+
+      tempNode = new PlaylistNode(ID, songTitle, artist, songDuration);
+      headNode->InsertAfter(tempNode);
+      return tempNode;
+   }
 
    if (option == 'o') {
-      if (headNode == nullptr) {
+      currNode = headNode->GetNext();
+      cout << playlistTitle << " - OUTPUT FULL PLAYLIST" << endl;
+      if (currNode == nullptr) {
          cout << "Playlist is empty" << endl;
       }
 
       int i = 1;
-      while (headNode != nullptr) {
+      while (currNode != nullptr) {
          cout << i << "." << endl;
-         headNode->PrintPlaylistNode();
+         currNode->PrintPlaylistNode();
          cout << endl;
-         headNode = headNode->GetNext();
+         currNode = currNode->GetNext();
          ++i;
       }
    }
@@ -35,13 +62,17 @@ PlaylistNode* ExecuteMenu(char option, string playlistTitle, PlaylistNode* headN
 
 int main() {
    string playlistTitle;
-   playlistNode* headNode;
+   PlaylistNode* headNode;
+   PlaylistNode* lastNode;
    char option;
    
-   cout << "Enter playlist's title: " << endl;
+   headNode = new PlaylistNode();
+   lastNode = headNode;
+   
+   cout << "Enter playlist's title:\n" << endl;
    getline (cin, playlistTitle);
       
-   while ((option != 'q')) {
+   while (option != 'q') {
       PrintMenu(playlistTitle);
       cout << "Choose an option:" << endl;
       cin >> option;
@@ -53,16 +84,8 @@ int main() {
       if (option == 'q') {
          break;
       }
-    headNode = ExecuteMenu(option, playlistTitle, headNode);    
+    lastNode = ExecuteMenu(option, playlistTitle, headNode);
    }
-
-
-   string ID, songTitle, artist;
-   int songDuration;
-   getline(cin, ID);
-   getline(cin, songTitle);
-   getline (cin, artist);
-   cin >> songDuration;  
    
    return 0;
 }
